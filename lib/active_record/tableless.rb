@@ -41,6 +41,14 @@ module ActiveRecord
       def create_or_update
         errors.empty?
       end
+      
+      def saved!(with_id = 1)
+        self.id = with_id
+        
+        def self.new_record?
+          false
+        end
+      end
     end
     
   end
