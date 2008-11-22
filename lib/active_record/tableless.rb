@@ -1,14 +1,26 @@
 module ActiveRecord
   module Tableless
+    
     def self.included(base)
-        base.extend(ClassMethods)
+      # 'base' is assumed to be ActiveRecord::Base
+      base.extend(ClassMethods)
     end
     
     module ClassMethods
-      def tableless
+      def tableless( options = {} )
         include ActiveRecord::Tableless::InstanceMethods
+        raise "No columns defined" unless options.has_key?(:columns) && !options[:columns].empty?
+        
+        self.extend(MetaMethods)
+        
+        for column_args in options[:columns]
+          column( *column_args )
+        end
+        
       end
-      
+    end
+    
+    module MetaMethods 
       def columns()
         @columns ||= []
       end
