@@ -1,7 +1,14 @@
 ActiveRecordTableless
 =====================
 
-Introduction goes here.
+Rails plugin allowing ActiveRecord models to be used with validations but 
+without being backed by a database table.
+
+
+Install
+=======
+
+script/plugin install git://github.com/robinsp/active_record_tableless.git
 
 
 Example
