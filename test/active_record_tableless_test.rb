@@ -68,5 +68,8 @@ class ActiveRecordTablelessTest < Test::Unit::TestCase
     assert_equal 1, m.id 
     assert !m.new_record?
     
+    m.exists!(250)
+    assert_equal 250, m.id 
+    assert !m.new_record?
   end
 end
