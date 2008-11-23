@@ -49,6 +49,7 @@ module ActiveRecord
           false
         end
       end
+      alias_method :exists!, :saved!
     end
     
   end
